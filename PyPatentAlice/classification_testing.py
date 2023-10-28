@@ -32,7 +32,7 @@ import zipfile
 import csv
 
 
-home_directory = '/Users/dominikjurek/Library/CloudStorage/Dropbox/University/PhD Berkeley/Research/Alice Project/NLP Patent Classification/Alice NLP Python Code/Testing Github files'
+home_directory = os.getcwd()
 os.chdir(home_directory)
 
 # Set seed

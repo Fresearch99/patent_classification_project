@@ -405,7 +405,7 @@ if __name__ == '__main__':
     
     #------------------------------------
     # Set parameters for execution as main
-    home_directory = '/Users/dominikjurek/Library/CloudStorage/Dropbox/University/PhD Berkeley/Research/Alice Project/NLP Patent Classification/Alice NLP Python Code/Testing Github files'
+    home_directory = os.getcwd()
     os.chdir(home_directory)
 
     # Note, 'issued_patents_control' version using patent claims for controls always use 

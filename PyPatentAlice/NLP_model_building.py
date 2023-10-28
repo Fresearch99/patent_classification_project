@@ -852,7 +852,7 @@ if __name__ == '__main__':
     # main routine with different control set variations.
 
     # Change the working directory
-    home_directory = '/Users/dominikjurek/Library/CloudStorage/Dropbox/University/PhD Berkeley/Research/Alice Project/NLP Patent Classification/Alice NLP Python Code/Testing Github files'
+    home_directory = os.getcwd()
     os.chdir(home_directory)
     
     output_version='issued_patents_control'

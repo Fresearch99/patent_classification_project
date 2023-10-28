@@ -587,7 +587,7 @@ if __name__ == '__main__':
     # 'ApplicationControls' version should use resampling (smaller number of eligible controls)
 
     # Change the working directory
-    home_directory = '/Users/dominikjurek/Library/CloudStorage/Dropbox/University/PhD Berkeley/Research/Alice Project/NLP Patent Classification/Alice NLP Python Code/Testing Github files'
+    home_directory = os.getcwd()
     os.chdir(home_directory)
 
     # Define directory for other data that are not PatentsView

@@ -546,7 +546,7 @@ if __name__ == '__main__':
     #----------------------------------------
     # Define the home directory.  Subfolders will be created here and data are
     # directly saved in here
-    home_directory = '/Users/dominikjurek/Library/CloudStorage/Dropbox/University/PhD Berkeley/Research/Alice Project/NLP Patent Classification/Alice NLP Python Code/Testing Github files'
+    home_directory = os.getcwd()
     os.chdir(home_directory)
 
 
