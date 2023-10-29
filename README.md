@@ -36,7 +36,18 @@ This project also includes an edited version of the eventual output folder with 
 [^2]: Lu, Qiang and Myers, Amanda F. and Beliveau, Scott, USPTO Patent Prosecution Research Data: Unlocking Office Action Traits (November 20, 2017). USPTO Economic Working Paper No. 2017-10.
 
 ## Setup
-Download the GitHub project and unzip.  Change the *home_directory* variable within each file, depending on where the output data are to be stored (I recommend using the *working directory* that is part of the package-download as location).  Note that the total project output can be very large (more than 40GB), if possible pre-download the required PatentsView and USPTO data into the home_directory location.
+Clone the project using the, e.g, the followin URL:
+
+```
+https://github.com/Fresearch99/patent_classification_project.git
+```
+
+Or download the GitHub project and unzip:
+```
+https://github.com/Fresearch99/patent_classification_project/archive/refs/heads/main.zip
+```
+
+Change the *home_directory* variable within each file, depending on where the output data are to be stored (I recommend using the *working directory* that is part of the package-download as location).  Note that the total project output can be very large (more than 40GB), if possible pre-download the required PatentsView and USPTO data into the home_directory location.
 
 The project requires in the home_directory the following (large) data folder with raw patent data.  Most of the files will be downloaded when executing the project (except *application_data_2020.csv* which should be downloaded manually), but the execution can be accelerated if the files are already downloaded and unzipped.  Rename the files accordingly as described after downloading.
 
