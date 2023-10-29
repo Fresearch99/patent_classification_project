@@ -1,7 +1,9 @@
 # PyPatentAlice - NLP-based identification of invalid patents
 The *2014 Alice Corp. v. CLS Bank International Supreme Court decision* (*Alice* decision) weakened the enforceability of existing software patents and limited the patentability of new software-related innovations.  Using claim texts from patents and reject application due to *Alice*, this project provides Python methods that build and train a NLP-based classification method to identify claim texts that are invalid after the *Alice* decision.  This can be used to predict for a wide set of patent portfolios whether they are treated, allowing for causal identification of the effects of the patentability of software inventions.
 
-I welcome any feedback and am looking forward to further developing this project in the future!  For this project, all data are sourced from the [United States Patent and Trademark Office (USPTO)](www.uspto.gov), and [PatentsView](https://patentsview.org/download/data-download-tables) and in the public domain.   
+The patent classification method is used to identify the causal effect of *Alice* on innovation, job creation, and market entry of firms in a current U.S. Census project (see Jurek, 2023, [*Patents, Innovation, and Market Entry*](https://www.census.gov/library/working-papers/2023/adrm/CES-WP-23-45.html)).  
+
+I welcome any feedback and am looking forward to further developing this project in the future!  For this project, all data are sourced from the [United States Patent and Trademark Office (USPTO)](www.uspto.gov), and [PatentsView](https://patentsview.org/download/data-download-tables) and in the public domain.  Special thank goes to Lu et al. (2017)[^2] who identified rejected application claims due to *Alice*.   
 
 
 ## Structure of the project
@@ -22,13 +24,16 @@ The *example_data* folder contains the following short example outputs from the 
 - **example_data_classified_patents.csv**: the dataset constructed in **classification_testing.py**.  'patent_id' identifies the issued patent, 'issue_date_dt' and the day on which it was issued.  The file also contains additional columns with the issue year, quarter, and the end day of the quarter of patent issuance, as well as the current CPC group and subgroup for the patent.  Finally, 'Treated' is the 'predicted_label' for the first claim in the respective patent and is one for invalid patents.
 - **example_data_for_analysis.csv**: aggregate patent issuance counts by CPC group created in **classification_testing.py**.  The patent data in **example_data_classified_patents.csv** are aggregated by CPC group, patent issuance quarter, and treatment status, 'Count' is the number of issued patents within each of these groups.  'Post' is a dummy for periods after the *Alice* decision in June 2014, and 'log_Count' is the log-transformation of the 'Count'.  This dataset is used for the regression analysis in the last part of **classification_testing.py**.
 
+This project also includes an edited version of the eventual output folder with *working directory*.  I recommend using the same folder to run your own project and adjust the *home_directory* parameter in the files accordingly. 
+- *LIME_issued_patents_control*: contains outputs for the [LIME](https://github.com/marcotcr/lime) evaluation outputs for the trained model.  LIME approximates the words that are most relevant for the classification as valid or invalid.
+- *TFIDF_SVC_issued_patents_control*: contains variations of the trained main model that is used for the classification, a [C-Support Vector Classification](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html) model on a [TF-IDF features](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html) matrix of the valid and invalid training claim data.  The folder also includes performance reports and plots for each model.
+- *Wordcloud_issued_patents_control*: contains [word clouds](https://github.com/amueller/word_cloud) of the word frequencies in valid and invalid claims.
+- **main_classes_issued_patents_control.pkl**: ["pickled"](https://docs.python.org/3/library/pickle.html) main USPC classes of rejected applications that are used to train the classification model and that can be re-used to identify patents and application publication that can be classified.
+- **model_data_issued_patents_control.pkl**: ["pickled"](https://docs.python.org/3/library/pickle.html) balanced training data of valid and invalid claim texts that can be used to fit a NLP classification model.  
 
 
-The package also contains the working directory for the project. In the working directory, relevant downloaded patent data, as well as the classification outputs and the analysis outputs such as wordclouds and performance reports for NLP models are saved. The storage space required can become quite big (for example, my local working directoy take up almost 40 GB). Especially the 'PatentsView_raw_data' folder can take up a lot of space since large data files with patent information are downloaded from PatentsView (https://patentsview.org/download/data-download-tables) and stored here.
-
-If storage limitation are a concern, limit the executions to only the variants of the patent classification that are truly needed. You can also adjust the code to store only relevant information such as CPC-based classications instead of both USPC and CPC-based. Finally, to really save storage space, pre-download the relevant patent information from PatentsView, edit the data file to only include the needed columns, and adjust the code to load only the pre-edited PatentsView data.
-
-[^1]: 573 U.S. 208 (2014)
+[^1]: 573 U.S. 208 (2014).
+[^2]: Lu, Qiang and Myers, Amanda F. and Beliveau, Scott, USPTO Patent Prosecution Research Data: Unlocking Office Action Traits (November 20, 2017). USPTO Economic Working Paper No. 2017-10.
 
 ## Setup
 Download the GitHub project and unzip.  Change the *home_directory* variable within each file, depending on where the output data are to be stored (I recommend using the *working directory* that is part of the package-download as location).  Note that the total project output can be very large (more than 40GB), if possible pre-download the required PatentsView and USPTO data into the home_directory location.
@@ -69,3 +74,10 @@ Below is the list of the library dependencies of the project.
 |seaborn=0.13.0       |
 |statsmodels=0.13.5   |
 |wordcloud=1.9.2      |
+
+## Current Version
+Version: 1.0
+Date: October 28, 2023
+Author: Dominik Jurek
+
+
