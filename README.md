@@ -36,10 +36,10 @@ This project also includes an edited version of the eventual output folder with 
 [^2]: Lu, Qiang and Myers, Amanda F. and Beliveau, Scott, USPTO Patent Prosecution Research Data: Unlocking Office Action Traits (November 20, 2017). USPTO Economic Working Paper No. 2017-10.
 
 ## Setup
-Clone the project using the, e.g, the followin URL:
+Clone the project:
 
 ```
-https://github.com/Fresearch99/patent_classification_project.git
+git clone https://github.com/Fresearch99/patent_classification_project.git
 ```
 
 Or download the GitHub project and unzip:
