@@ -227,8 +227,13 @@ if __name__ == '__main__':
         title='Count Issued Patents in Affected CPC Groups')
 
     plt.legend(title = 'Predicted Status', loc='upper left', labels=['Control', 'Treated'])
+
+    # Plot if needed
+    # plt.savefig('time_series_treated_control_issuances.png', dpi=300)
+    
     plt.show()
 
+    
 
     #---------------------------------
     # Regression models
@@ -261,6 +266,39 @@ if __name__ == '__main__':
 
     print(reg_poisson.summary())
     print(reg_negbin.summary())
+
+
+    #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    #Save regression output
+    
+    # Replicate the Panel OLS with statsmodel to make saving as regression
+    # output easier
+    reg_fe_ols = sm.ols(
+        formula='log_Count ~ Treated * Post + C(group_id) + C(quarter_issue_date_dt)',
+        data=agg_counts).fit(
+            cov_type='cluster',
+            cov_kwds={'groups': agg_counts['group_id']})
+    print(reg_fe_ols.summary())    # -> same coefficient estimates as with Panel model.
+
+
+    from statsmodels.iolib.summary2 import summary_col
+    reg_table = summary_col(
+        [reg_did, reg_fe_ols, reg_poisson, reg_negbin], 
+                stars=True, 
+                float_format="%.3f",
+                info_dict={
+                    'N': lambda x: "%#6d" % x.nobs,
+                    'R-squared:': lambda x: "%#8.3f" % x.rsquared,
+                    'Adj. R-squared:': lambda x: "%#8.3f" % x.rsquared_adj,
+                    'Pseudo R-squared:': lambda x: "%#8.3f" % x.prsquared},
+                regressor_order=['Intercept', 'alpha', 'Post', 'Treated', 'Treated:Post'])
+    # Note, this table contains all the coefficients for the fixed effects form 
+    # the statsmodel version of the Panel model.  Remove those by hand from 
+    # the table when transfering into LaTex.
+    
+    with open('regression_models_DiD.tex', 'w') as f:
+        f.write(reg_table.as_latex())
+        f.close()
 
     #----------------------------------
     # Save sample data

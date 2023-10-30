@@ -31,6 +31,7 @@ This project also includes an edited version of the eventual output folder with 
 - **main_classes_issued_patents_control.pkl**: ["pickled"](https://docs.python.org/3/library/pickle.html) main USPC classes of rejected applications that are used to train the classification model and that can be re-used to identify patents and application publication that can be classified.
 - **model_data_issued_patents_control.pkl**: ["pickled"](https://docs.python.org/3/library/pickle.html) balanced training data of valid and invalid claim texts that can be used to fit a NLP classification model.  
 
+The project also contains the file **patent_classification_edit_raw_files_for_capsule.py** which edits the raw USPTO and PatentsView files by removing rows that are out of the date range for the example executions.  The purpose is eventually to have an executable capsule that can be published with the project.
 
 [^1]: 573 U.S. 208 (2014).
 [^2]: Lu, Qiang and Myers, Amanda F. and Beliveau, Scott, USPTO Patent Prosecution Research Data: Unlocking Office Action Traits (November 20, 2017). USPTO Economic Working Paper No. 2017-10.
