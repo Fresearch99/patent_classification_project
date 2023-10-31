@@ -948,7 +948,11 @@ if __name__ == '__main__':
                                         classification_model=LogisticRegression(random_state=RANDOM_SEED),
                                         cls_name='logistic_regression')
     score_dict.update({'Model Name': 'Logistic Regression'})
-    performance_df = performance_df.append(score_dict, ignore_index=True)
+    score = pd.DataFrame([score_dict])
+    performance_df = pd.concat([performance_df, score], ignore_index=True)
+    # -> replace due to capsule build from:
+    # performance_df = performance_df.append(score_dict, ignore_index=True)
+    
 
     #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     print('\t\t Naive Bayesian', flush=True)
@@ -958,7 +962,8 @@ if __name__ == '__main__':
                                         classification_model=MultinomialNB(),
                                         cls_name='multinomial_NB')
     score_dict.update({'Model Name': 'Naive Bayes'})
-    performance_df = performance_df.append(score_dict, ignore_index=True)
+    score = pd.DataFrame([score_dict])
+    performance_df = pd.concat([performance_df, score], ignore_index=True)
 
     #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     print('\t\t SVC', flush=True)
@@ -969,7 +974,8 @@ if __name__ == '__main__':
                                                                  probability=True),
                                         cls_name='svc_classifier')
     score_dict.update({'Model Name': 'Support Vector Machine'})
-    performance_df = performance_df.append(score_dict, ignore_index=True)
+    score = pd.DataFrame([score_dict])
+    performance_df = pd.concat([performance_df, score], ignore_index=True)
 
     #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     print('\t\t Decision Tree', flush=True)
@@ -979,7 +985,8 @@ if __name__ == '__main__':
                                         classification_model=DecisionTreeClassifier(random_state=RANDOM_SEED),
                                         cls_name='decision_tree_classifier')
     score_dict.update({'Model Name': 'Decision Tree'})
-    performance_df = performance_df.append(score_dict, ignore_index=True)
+    score = pd.DataFrame([score_dict])
+    performance_df = pd.concat([performance_df, score], ignore_index=True)
 
     #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     print('\t\t Random Forest', flush=True)
@@ -989,7 +996,8 @@ if __name__ == '__main__':
                                         classification_model=RandomForestClassifier(random_state=RANDOM_SEED),
                                         cls_name='random_forest_classifier')
     score_dict.update({'Model Name': 'Random Forest'})
-    performance_df = performance_df.append(score_dict, ignore_index=True)
+    score = pd.DataFrame([score_dict])
+    performance_df = pd.concat([performance_df, score], ignore_index=True)
 
     #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     print('\t\t K Neighbors', flush=True)
@@ -999,7 +1007,8 @@ if __name__ == '__main__':
                                         classification_model=KNeighborsClassifier(),
                                         cls_name='k_neighbors')
     score_dict.update({'Model Name': 'K-nearest Neighbors'})
-    performance_df = performance_df.append(score_dict, ignore_index=True)
+    score = pd.DataFrame([score_dict])
+    performance_df = pd.concat([performance_df, score], ignore_index=True)
 
     #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     print('\t\t Stochastic Gradient Descent', flush=True)
@@ -1010,7 +1019,8 @@ if __name__ == '__main__':
                                         classification_model=SGDClassifier(random_state=RANDOM_SEED),
                                         cls_name='sgd')
     score_dict.update({'Model Name': 'Stochastic Gradient Descent'})
-    performance_df = performance_df.append(score_dict, ignore_index=True)
+    score = pd.DataFrame([score_dict])
+    performance_df = pd.concat([performance_df, score], ignore_index=True)
 
     #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     print('\t\t Stochastic Gradient Descent with modified huber loss', flush=True)
@@ -1022,7 +1032,8 @@ if __name__ == '__main__':
                                                                            loss='modified_huber'),
                                         cls_name='sgd_modHuber')
     score_dict.update({'Model Name': 'Stochastic Gradient Descent - Modified Huber'})
-    performance_df = performance_df.append(score_dict, ignore_index=True)
+    score = pd.DataFrame([score_dict])
+    performance_df = pd.concat([performance_df, score], ignore_index=True)
 
     #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     print('\t\t AdaBoost', flush=True)
@@ -1032,7 +1043,8 @@ if __name__ == '__main__':
                                         classification_model=AdaBoostClassifier(random_state=RANDOM_SEED),
                                         cls_name='adaboost')
     score_dict.update({'Model Name': 'AdaBoost'})
-    performance_df = performance_df.append(score_dict, ignore_index=True)
+    score = pd.DataFrame([score_dict])
+    performance_df = pd.concat([performance_df, score], ignore_index=True)
 
     #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     print('\t\t Gradient Boosting', flush=True)
@@ -1042,7 +1054,8 @@ if __name__ == '__main__':
                                         classification_model=GradientBoostingClassifier(random_state=RANDOM_SEED),
                                         cls_name='gradientboosting')
     score_dict.update({'Model Name': 'Gradient Boosting'})
-    performance_df = performance_df.append(score_dict, ignore_index=True)
+    score = pd.DataFrame([score_dict])
+    performance_df = pd.concat([performance_df, score], ignore_index=True)
 
     #-----------------------------------------
     # Save performance results

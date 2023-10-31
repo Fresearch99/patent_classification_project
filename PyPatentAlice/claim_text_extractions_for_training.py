@@ -360,8 +360,8 @@ def control_patent_claim_fulltext_extraction(rejections_data: pd.DataFrame,
                         # selected patent classes. 
 
     uspc_main_category = list(set(rejections_application_date['uspc_class_str'].value_counts(ascending=False). \
-                                  nlargest(nclasses).reset_index()['index']))
-
+                                  nlargest(nclasses).reset_index().iloc[:, 0]))
+                                # -> for capsule: change from ['index']
     #------------------------------------------
     # Filter control data to classes most affected
 

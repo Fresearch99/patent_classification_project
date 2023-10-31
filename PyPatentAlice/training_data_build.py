@@ -460,7 +460,8 @@ def training_data_import(nclasses: int = 4,
         main_classes = list(set(specified_uspc_class))
     else:
         main_classes = list(set(alice_application_treated.uspc_class_str.value_counts(). \
-                                nlargest(nclasses).reset_index()['index']))
+                                nlargest(nclasses).reset_index().iloc[:, 0]))
+                                #-> change due to capsule from ['index'] 
     print('\t USPC main classes for patent: \n' + str(main_classes), flush=True)
 
     alice_text_treated = alice_application_treated[

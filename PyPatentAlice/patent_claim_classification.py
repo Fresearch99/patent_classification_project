@@ -676,7 +676,8 @@ if __name__ == '__main__':
 
     # select most common cpc classes
     main_cpc_classes = list(set(cpc_uspc_patents.group_id.value_counts(). \
-                                nlargest(cpc_nclasses).reset_index()['index']))
+                                nlargest(cpc_nclasses).reset_index().iloc[:, 0]))
+                                # -> from capsule build, replace old ['index']
 
     print('\t Most frequent CPC classes\n' 
           + str(cpc_uspc_patents.group_id.value_counts(normalize=True).head(10).cumsum()), flush=True)

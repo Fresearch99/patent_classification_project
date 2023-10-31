@@ -103,10 +103,10 @@ def analysis_df_build():
     #-------------------------------
     # cpc classifications
     #-------------------------------
-    if ('cpc_current_PatentsView.tsv' in os.listdir(home_directory)):
+    if ('cpc_current_PatentsView.tsv' in os.listdir(PatentsView_directory)):
         #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
         # Local
-        cpc_current = pd.read_csv('cpc_current_PatentsView.tsv', delimiter="\t", 
+        cpc_current = pd.read_csv(PatentsView_directory + '/cpc_current_PatentsView.tsv', delimiter="\t", 
                                   quoting=csv.QUOTE_NONNUMERIC, low_memory=False)
     else:
         #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -125,7 +125,9 @@ def analysis_df_build():
     
         cpc_current = pd.read_csv(z.open(z.infolist()[0]), delimiter="\t", 
                                   quoting=csv.QUOTE_NONNUMERIC, low_memory=False)
-    
+        
+        shutil.move('cpc_current_PatentsView.tsv', PatentsView_directory + '/cpc_current_PatentsView.tsv')
+
     
     #-------------------------------------
     # Focus on primary categories
