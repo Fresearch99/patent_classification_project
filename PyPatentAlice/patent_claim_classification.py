@@ -720,9 +720,9 @@ if __name__ == '__main__':
     r'''
     #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     # Parallel Execution -> not recommended for desktop 
-    print('\t\t Number of Cores: ' + str(cores), flush=True)
     cores = mp.cpu_count()
-  
+    print('\t\t Number of Cores: ' + str(cores), flush=True)
+    
     pool = mp.Pool(cores)
     # Run the scraping method for the contents required
     for year in range(MIN_CLASSIFICATION_YEAR, MAX_CLASSIFICATION_YEAR+1):
@@ -797,8 +797,8 @@ if __name__ == '__main__':
     r'''
     #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     # Parallel Execution -> not recommended for desktop 
-    print('\t\t Number of Cores: ' + str(cores), flush=True)
     cores = mp.cpu_count()
+    print('\t\t Number of Cores: ' + str(cores), flush=True)
 
     pool = mp.Pool(cores)
     # Run the scraping method for the contents required
