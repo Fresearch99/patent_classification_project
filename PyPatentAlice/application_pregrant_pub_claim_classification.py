@@ -763,7 +763,7 @@ if __name__ == '__main__':
     
     #r'''
     #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    # Parallel Execution -> not recommended for desktop
+    # Parallel Execution 
     cores = mp.cpu_count()
     print('\t\t Number of Cores: ' + str(cores))
 
@@ -886,7 +886,8 @@ if __name__ == '__main__':
 
     # select most common cpc classes
     main_cpc_classes = list(set(cpc_uspc_patents.group_id.value_counts(). \
-                                nlargest(cpc_nclasses).reset_index()['index']))
+                                nlargest(cpc_nclasses).reset_index().iloc[:, 0]))
+                                # -> from capsule, change from ['index'] 
 
     print('\t Most frequent CPC classes\n' 
           + str(cpc_uspc_patents.group_id.value_counts(normalize=True).head(10).cumsum()), flush=True)
@@ -938,7 +939,7 @@ if __name__ == '__main__':
 
     #r'''
     #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    # Parallel Execution -> not recommended for desktop
+    # Parallel Execution 
     cores = mp.cpu_count()
     print('\t\t Number of Cores: ' + str(cores))
 

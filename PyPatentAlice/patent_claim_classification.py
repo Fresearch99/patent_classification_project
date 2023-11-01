@@ -718,9 +718,9 @@ if __name__ == '__main__':
     if not os.path.exists(suboutput_dir):
         os.makedirs(suboutput_dir)
 
-    r'''
+    
     #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    # Parallel Execution -> not recommended for desktop 
+    # Parallel Execution 
     cores = mp.cpu_count()
     print('\t\t Number of Cores: ' + str(cores), flush=True)
     
@@ -739,8 +739,8 @@ if __name__ == '__main__':
                         )
     pool.close()
     pool.join()
-    r'''
     
+    r'''
     #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     # Linear Execution
     for year in range(MIN_CLASSIFICATION_YEAR, MAX_CLASSIFICATION_YEAR+1):
@@ -749,7 +749,8 @@ if __name__ == '__main__':
                                                affected_patent_list=uspc_affected_patent_list,
                                                nlp_model=text_poly2_svc,
                                                output_path=suboutput_dir)
-
+    r'''
+                                               
     #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     # Load from Target
     patent_classification_files = os.listdir(suboutput_dir)
@@ -795,9 +796,9 @@ if __name__ == '__main__':
     if not os.path.exists(suboutput_dir):
         os.makedirs(suboutput_dir)
 
-    r'''
+    
     #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    # Parallel Execution -> not recommended for desktop 
+    # Parallel Execution
     cores = mp.cpu_count()
     print('\t\t Number of Cores: ' + str(cores), flush=True)
 
@@ -816,8 +817,8 @@ if __name__ == '__main__':
                         )
     pool.close()
     pool.join()
+    
     r'''
-
     #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     # Linear Execution
     for year in range(MIN_CLASSIFICATION_YEAR, MAX_CLASSIFICATION_YEAR+1):
@@ -826,7 +827,8 @@ if __name__ == '__main__':
                                                cpc_affected_patent_list,
                                                text_poly2_svc,
                                                suboutput_dir)
-
+    r'''
+                                               
     #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     # Load from Target
     patent_classification_files = os.listdir(suboutput_dir)
