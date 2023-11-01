@@ -48,7 +48,7 @@ Or download the GitHub project and unzip:
 https://github.com/Fresearch99/patent_classification_project/archive/refs/heads/main.zip
 ```
 
-The project is also linked to a reproducible capsule on Code Ocean.  The capsule contains a shortened version of the raw data and information on the execution environment.
+The project is also linked to a reproducible capsule on Code Ocean.  The capsule contains a shortened version of the raw data and information on the execution environment.  The [walkthrough file for capsule execution](https://github.com/Fresearch99/patent_classification_project/blob/main/walkthrough%20patent%20classification-capsule%20execution.ipynb) was only slightly edited to allow for results to be stored at the end.
 
 ```
 https://codeocean.com/capsule/5756567/tree
