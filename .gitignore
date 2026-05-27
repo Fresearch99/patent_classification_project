@@ -1,0 +1,33 @@
+# Local/system files
+.DS_Store
+.Rhistory
+.RData
+.Rproj.user/
+.ipynb_checkpoints/
+__pycache__/
+*.py[cod]
+
+# Python environments
+.venv/
+venv/
+env/
+
+# Local/private config
+.env
+.env.*
+*.key
+*.pem
+
+# Logs
+*.log
+
+# Large or potentially private data/model files
+*.pkl
+*.pickle
+*.parquet
+*.feather
+*.dta
+*.rds
+*.Rds
+*.zip
+*.gz
